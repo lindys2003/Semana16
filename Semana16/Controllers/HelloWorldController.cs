@@ -1,0 +1,28 @@
+﻿using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text.Encodings.Web;
+using System.Threading.Tasks;
+
+namespace Semana16.Controllers
+{
+    public class HelloWorldController : Controller
+    {
+        public IActionResult Index()
+        {
+            return View();
+        }
+
+        public IActionResult Bienvenido (string name, int numTimes = 1)
+        {
+            ViewData["name"] = "Hola" + name;
+            ViewData["numTimes"] = numTimes;
+            return View();
+        }
+        public String Parameters(string name, int numTimes = 1)
+        {
+            return HtmlEncoder.Default.Encode($"Hola {name}, su numero de intentos es: {numTimes}");
+        }
+    }
+}
